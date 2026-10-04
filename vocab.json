@@ -1,0 +1,129 @@
+{
+  "metadata": {
+    "scope": "Trang 16 - End (Bổ sung chi tiết)",
+    "language_pair": "Bahnar - Vietnamese"
+  },
+  "vocab_database": [
+    {
+      "topic": "Đời sống hàng ngày & Sinh hoạt (Tơdrong erih rim nar)",
+      "words": [
+        { "bahnar": "nam", "vietnamese": "đi", "type": "Động từ", "note": "Trang 16" },
+        { "bahnar": "chă", "vietnamese": "tìm / hái / đi làm", "type": "Động từ", "note": "Trang 17" },
+        { "bahnar": "sa", "vietnamese": "ăn", "type": "Động từ", "note": "Trang 18" },
+        { "bahnar": "et", "vietnamese": "uống", "type": "Động từ", "note": "Trang 18" },
+        { "bahnar": "tep", "vietnamese": "ngủ", "type": "Động từ", "note": "Trang 20" },
+        { "bahnar": "hnam", "vietnamese": "nhà", "type": "Danh từ", "note": "Trang 22" },
+        { "bahnar": "dak", "vietnamese": "nước", "type": "Danh từ", "note": "Trang 25" },
+        { "bahnar": "unh", "vietnamese": "lửa", "type": "Danh từ", "note": "Trang 28" },
+        { "bahnar": "mặt", "vietnamese": "mặt trời / mắt", "type": "Danh từ", "note": "Trang 30" }
+      ]
+    },
+    {
+      "topic": "Gia đình & Thân tộc (Khul bơngai lăm hnam)",
+      "words": [
+        { "bahnar": "mě", "vietnamese": "mẹ", "type": "Danh từ", "note": "Trang 32" },
+        { "bahnar": "bă", "vietnamese": "cha / bố", "type": "Danh từ", "note": "Trang 32" },
+        { "bahnar": "yă", "vietnamese": "bà", "type": "Danh từ", "note": "Trang 35" },
+        { "bahnar": "bok", "vietnamese": "ông", "type": "Danh từ", "note": "Trang 35" },
+        { "bahnar": "kon", "vietnamese": "con", "type": "Danh từ", "note": "Trang 38" },
+        { "bahnar": "anhŏng", "vietnamese": "anh / chị", "type": "Danh từ", "note": "Trang 40" },
+        { "bahnar": "oh", "vietnamese": "em", "type": "Danh từ", "note": "Trang 40" },
+        { "bahnar": "mon", "vietnamese": "cháu", "type": "Danh từ", "note": "Trang 42" },
+        { "bahnar": "mi", "vietnamese": "chú / cậu", "type": "Danh từ", "note": "Trang 44" }
+      ]
+    },
+    {
+      "topic": "Nông nghiệp & Trồng trọt (Jang mir jang sre)",
+      "words": [
+        { "bahnar": "mir", "vietnamese": "rẫy", "type": "Danh từ", "note": "Trang 45" },
+        { "bahnar": "sre", "vietnamese": "ruộng", "type": "Danh từ", "note": "Trang 48" },
+        { "bahnar": "ba", "vietnamese": "lúa / cơm", "type": "Danh từ", "note": "Trang 50" },
+        { "bahnar": "hơbo", "vietnamese": "ngô / bắp", "type": "Danh từ", "note": "Trang 52" },
+        { "bahnar": "bum", "vietnamese": "khoai", "type": "Danh từ", "note": "Trang 54" },
+        { "bahnar": "choh", "vietnamese": "cuốc / xới đất", "type": "Động từ", "note": "Trang 56" },
+        { "bahnar": "pơtăm", "vietnamese": "trồng", "type": "Động từ", "note": "Trang 56" },
+        { "bahnar": "xiam along", "vietnamese": "gốc cây", "type": "Danh từ", "note": "Trang 57" }
+      ]
+    },
+    {
+      "topic": "Thiên nhiên & Địa hình (Bri kông & Dak krông)",
+      "words": [
+        { "bahnar": "bri", "vietnamese": "rừng", "type": "Danh từ", "note": "Trang 58" },
+        { "bahnar": "kông", "vietnamese": "núi", "type": "Danh từ", "note": "Trang 60" },
+        { "bahnar": "krông", "vietnamese": "sông", "type": "Danh từ", "note": "Trang 63" },
+        { "bahnar": "pơlei", "vietnamese": "làng / buôn", "type": "Danh từ", "note": "Trang 66" },
+        { "bahnar": "trong", "vietnamese": "đường đi", "type": "Danh từ", "note": "Trang 68" }
+      ]
+    },
+    {
+      "topic": "Động vật & Vật nuôi (Dôm kiơm kiêc)",
+      "words": [
+        { "bahnar": "rơpu", "vietnamese": "trâu", "type": "Danh từ", "note": "Trang 70" },
+        { "bahnar": "lơmo", "vietnamese": "bò", "type": "Danh từ", "note": "Trang 72" },
+        { "bahnar": "ech", "vietnamese": "heo / lợn", "type": "Danh từ", "note": "Trang 75" },
+        { "bahnar": "yěr", "vietnamese": "gà", "type": "Danh từ", "note": "Trang 78" },
+        { "bahnar": "kơcho", "vietnamese": "chó", "type": "Danh từ", "note": "Trang 80" },
+        { "bahnar": "mêu", "vietnamese": "mèo", "type": "Danh từ", "note": "Trang 82" },
+        { "bahnar": "chěm", "vietnamese": "chim", "type": "Danh từ", "note": "Trang 85" },
+        { "bahnar": "ka", "vietnamese": "cá", "type": "Danh từ", "note": "Trang 88" },
+        { "bahnar": "kơpô", "vietnamese": "bướm", "type": "Danh từ", "note": "Trang 90" }
+      ]
+    },
+    {
+      "topic": "Trường học & Giáo dục (Trưng hŏk & Tơdrong bơtho)",
+      "words": [
+        { "bahnar": "trung hŏk", "vietnamese": "trường học", "type": "Danh từ", "note": "Trang 92" },
+        { "bahnar": "dŭch bơtho", "vietnamese": "thầy / cô giáo", "type": "Danh từ", "note": "Trang 95" },
+        { "bahnar": "kon hŏk", "vietnamese": "học sinh", "type": "Danh từ", "note": "Trang 98" },
+        { "bahnar": "hla bơar", "vietnamese": "sách / giấy / vở", "type": "Danh từ", "note": "Trang 102" },
+        { "bahnar": "viẽt", "vietnamese": "bút / viết", "type": "Danh từ", "note": "Trang 105" },
+        { "bahnar": "hŏk", "vietnamese": "học", "type": "Động từ", "note": "Trang 108" },
+        { "bahnar": "chih", "vietnamese": "viết", "type": "Động từ", "note": "Trang 110" },
+        { "bahnar": "iar", "vietnamese": "đọc", "type": "Động từ", "note": "Trang 112" },
+        { "bahnar": "bơtho", "vietnamese": "dạy học", "type": "Động từ", "note": "Trang 115" }
+      ]
+    },
+    {
+      "topic": "Sức khỏe & Y tế (Tơ hngâm pran & Pơgang)",
+      "words": [
+        { "bahnar": "hnam pơgang", "vietnamese": "trạm y tế / bệnh viện", "type": "Danh từ", "note": "Trang 118" },
+        { "bahnar": "bak si", "vietnamese": "bác sĩ", "type": "Danh từ", "note": "Trang 120" },
+        { "bahnar": "pơgang", "vietnamese": "thuốc", "type": "Danh từ", "note": "Trang 122" },
+        { "bahnar": "jĭ", "vietnamese": "bệnh / đau", "type": "Tính từ / Động từ", "note": "Trang 125" },
+        { "bahnar": "khăm lăng", "vietnamese": "khám bệnh", "type": "Động từ", "note": "Trang 127" },
+        { "bahnar": "rơgoh", "vietnamese": "sạch sẻ", "type": "Tính từ", "note": "Trang 128" }
+      ]
+    },
+    {
+      "topic": "Sản xuất, Thương mại & An ninh (Trang 129 - End)",
+      "words": [
+        { "bahnar": "tơpă jĭ", "vietnamese": "chủ yếu / chính", "type": "Trạng từ", "note": "Trang 129" },
+        { "bahnar": "tơgăk", "vietnamese": "cái rựa", "type": "Danh từ", "note": "Trang 129" },
+        { "bahnar": "anhik", "vietnamese": "cái cuốc", "type": "Danh từ", "note": "Trang 129" },
+        { "bahnar": "jơmŭl", "vietnamese": "gậy chọc lỗ", "type": "Danh từ", "note": "Trang 129" },
+        { "bahnar": "hơdrěch", "vietnamese": "hạt giống", "type": "Danh từ", "note": "Trang 129" },
+        { "bahnar": "kơmăi", "vietnamese": "máy móc", "type": "Danh từ", "note": "Trang 129" },
+        { "bahnar": "sut pơngot", "vietnamese": "xóa đói", "type": "Cụm động từ", "note": "Trang 133" },
+        { "bahnar": "biỡ tơnuh", "vietnamese": "giảm nghèo", "type": "Cụm động từ", "note": "Trang 133" },
+        { "bahnar": "pơdro tơmam", "vietnamese": "thương mại / buôn bán", "type": "Danh từ", "note": "Trang 139" },
+        { "bahnar": "suang", "vietnamese": "múa xoang", "type": "Động từ", "note": "Trang 139" },
+        { "bahnar": "chĩnh chêng", "vietnamese": "cồng chiêng", "type": "Danh từ", "note": "Trang 139" },
+        { "bahnar": "tŏ đěch", "vietnamese": "cảm nắng nhẹ", "type": "Cụm tính từ", "note": "Trang 151" },
+        { "bahnar": "găr", "vietnamese": "viên (thuốc)", "type": "Danh từ", "note": "Trang 151" },
+        { "bahnar": "hngenh", "vietnamese": "muỗi", "type": "Danh từ", "note": "Trang 151" },
+        { "bahnar": "kơmŭng", "vietnamese": "mùng / màn", "type": "Danh từ", "note": "Trang 151" },
+        { "bahnar": "kuěch", "vietnamese": "rẽ / quẹo", "type": "Động từ", "note": "Trang 153" },
+        { "bahnar": "angiěo", "vietnamese": "bên trái", "type": "Danh từ", "note": "Trang 153" },
+        { "bahnar": "ama", "vietnamese": "bên phải", "type": "Danh từ", "note": "Trang 153" },
+        { "bahnar": "tơklă", "vietnamese": "đối diện", "type": "Giới từ", "note": "Trang 153" },
+        { "bahnar": "tơtil", "vietnamese": "bên cạnh", "type": "Giới từ", "note": "Trang 153" },
+        { "bahnar": "wěi lăng", "vietnamese": "bảo vệ / giữ gìn", "type": "Động từ", "note": "Trang 155" },
+        { "bahnar": "teh đak", "vietnamese": "đất nước / tổ quốc", "type": "Danh từ", "note": "Trang 155" },
+        { "bahnar": "khŭl chữ kơnễ", "vietnamese": "kẻ xấu / kẻ phản động", "type": "Danh từ", "note": "Trang 156" },
+        { "bahnar": "tơguăt", "vietnamese": "đoàn kết", "type": "Động từ", "note": "Trang 158" },
+        { "bahnar": "lĭnh pơlěi", "vietnamese": "dân quân", "type": "Danh từ", "note": "Trang 165" },
+        { "bahnar": "bỗ đỗi", "vietnamese": "bộ đội", "type": "Danh từ", "note": "Trang 167" }
+      ]
+    }
+  ]
+}

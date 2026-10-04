@@ -1,0 +1,201 @@
+{
+  "metadata": {
+    "scope": "Trang 16 - End (Đầy đủ cấu trúc ngữ pháp mẫu)",
+    "language_pair": "Bahnar - Vietnamese"
+  },
+  "patterns_database": [
+    {
+      "category": "Cấu trúc Khái niệm & Định nghĩa (S + jĭ + N/Adj)",
+      "patterns": [
+        {
+          "pattern_id": "PAT_01",
+          "structure": "[Chủ ngữ] + jĭ + [Danh từ / Cụm danh từ]",
+          "meaning": "[Cái gì / Ai] là [cái gì / ai]",
+          "explanation": "Dùng để giới thiệu danh tính, nghề nghiệp, chức năng hoặc định nghĩa một đối tượng.",
+          "examples": [
+            {
+              "bahnar": "Dŭch bơtho jĭ bơngai ĭnh mêm tôch bơ nê.",
+              "vietnamese": "Cô giáo là người mà em yêu quý nhất.",
+              "note": "Trang 142"
+            },
+            {
+              "bahnar": "Wěi lăng lăm teh đak kojăp jĭ tơdrong jang kăl kơ rim bơngai kon pơlěi.",
+              "vietnamese": "Bảo vệ an ninh Tổ quốc là nhiệm vụ quan trọng của mỗi người dân.",
+              "note": "Trang 155"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Cấu trúc Hành động & Thời gian (Hành động + rim nar / hơdrol xỡ / dang ěi)",
+      "patterns": [
+        {
+          "pattern_id": "PAT_02",
+          "structure": "[Chủ ngữ] + [Động từ] + [Tân ngữ] + rim nar",
+          "meaning": "[Ai đó] làm [việc gì] mỗi ngày / hằng ngày",
+          "explanation": "Diễn tả thói quen hoặc hành động lặp đi lặp lại hàng ngày.",
+          "examples": [
+            {
+              "bahnar": "Mě bă ĭnh năm jang mir sa rim nar.",
+              "vietnamese": "Cha mẹ tôi đi làm rẫy mỗi ngày.",
+              "note": "Trang 32"
+            },
+            {
+              "bahnar": "Rim nar kon hŏk năm trung hŏk hơgěi.",
+              "vietnamese": "Mỗi ngày học sinh đi đến trường chăm chỉ.",
+              "note": "Trang 108"
+            }
+          ]
+        },
+        {
+          "pattern_id": "PAT_03",
+          "structure": "Mă hơdrol xỡ + [Chủ ngữ] + [Hành động trong quá khứ]",
+          "meaning": "Trước đây / Ngày xưa, [Ai đó] làm [việc gì]",
+          "explanation": "Dùng để diễn tả trạng thái, thói quen hoặc phương thức sản xuất trong quá khứ.",
+          "examples": [
+            {
+              "bahnar": "Mă hơdrol xỡ bơngai Bahnar yua tơpă jĭ tơgăk kơna tơdrong chong bri koh along...",
+              "vietnamese": "Trước đây người Ba Na chủ yếu dùng rựa để phát rừng chặt cây...",
+              "note": "Trang 129"
+            }
+          ]
+        },
+        {
+          "pattern_id": "PAT_04",
+          "structure": "Ră hơ'nhao dang ěi + [Chủ ngữ] + [Hành động / Trạng thái hiện tại]",
+          "meaning": "Hiện nay / Bây giờ, [Ai đó] làm [việc gì]",
+          "explanation": "Diễn tả sự thay đổi, đổi mới hoặc thực trạng ở thời điểm hiện tại.",
+          "examples": [
+            {
+              "bahnar": "Ră hơ'nhao dang ěi đe kon kông đěi hơbâp chŏh jang yua kơmăi lăm choh jang sa.",
+              "vietnamese": "Hiện nay đồng bào đã biết áp dụng máy móc vào sản xuất.",
+              "note": "Trang 129"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Cấu trúc Cùng nhau & Đoàn kết (Chủ ngữ + atŭm / tơguăt + Động từ)",
+      "patterns": [
+        {
+          "pattern_id": "PAT_05",
+          "structure": "[Danh từ 1] + păng + [Danh từ 2] + atŭm + [Động từ]",
+          "meaning": "[Ai] và [Ai] cùng nhau làm [việc gì]",
+          "explanation": "Diễn tả sự hợp tác, đồng lòng hoặc hành động tập thể.",
+          "examples": [
+            {
+              "bahnar": "Anhŏng păng oh atŭm sa ba lờm hnam.",
+              "vietnamese": "Anh em cùng nhau ăn cơm trong nhà.",
+              "note": "Trang 40"
+            },
+            {
+              "bahnar": "Rim hơdrũng hơdrěch kon kông atŭm tơguăt tơguăl pôm nơr bỡ don tơiung pơjing teh đak.",
+              "vietnamese": "Các dân tộc thiểu số cùng đoàn kết một lòng một ý xây dựng đất nước.",
+              "note": "Trang 158"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Cấu trúc Vị trí & Chỉ hướng (S + oěi + Trạng từ vị trí + N)",
+      "patterns": [
+        {
+          "pattern_id": "PAT_06",
+          "structure": "[Đối tượng] + oěi + [lờm / hơba / tơtil / tơklă / gah rŏng] + [Địa điểm]",
+          "meaning": "[Đối tượng] ở [trong / trên / bên cạnh / đối diện / phía sau] [Địa điểm]",
+          "explanation": "Dùng để mô tả vị trí không gian của vật thể, con người hoặc địa danh.",
+          "examples": [
+            {
+              "bahnar": "Bok yă oěi lờm hnam wěi lăng kon mon.",
+              "vietnamese": "Ông bà ở trong nhà trông nom cháu.",
+              "note": "Trang 35"
+            },
+            {
+              "bahnar": "Hnam jơngih oěi tŏk bŏk tơtil kơ hnam pơgang păng gah rŏng kơ trưng hŏk.",
+              "vietnamese": "Nhà cộng đồng nằm ở giữa, bên cạnh trạm y tế và ở phía sau trường học.",
+              "note": "Trang 153"
+            }
+          ]
+        },
+        {
+          "pattern_id": "PAT_07",
+          "structure": "Năm tơ păt + [Đường] + kuěch + [gah angiěo / gah ama] + jĭ + [Địa điểm]",
+          "meaning": "Đi thẳng [đường này], rẽ [trái / phải] là [địa điểm]",
+          "explanation": "Dùng trong ngữ cảnh chỉ đường.",
+          "examples": [
+            {
+              "bahnar": "Năm tơ păt trong 'nê, kuěch gah angiěo jĭ 'năr hnam pơgang.",
+              "vietnamese": "Đi thẳng đường này, rẽ bên trái là tới trạm y tế.",
+              "note": "Trang 153"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Cấu trúc Y tế & Khuyên bảo / Yêu cầu (Pơvân / Chong kơ + Động từ)",
+      "patterns": [
+        {
+          "pattern_id": "PAT_08",
+          "structure": "[Bác sĩ / Ai đó] + oh ăn + [Người bệnh] + pơgang + et + [Liều lượng]",
+          "meaning": "[Bác sĩ / Ai đó] cấp thuốc cho [Người bệnh], uống [Liều lượng]",
+          "explanation": "Mẫu câu kê đơn thuốc hoặc hướng dẫn điều trị.",
+          "examples": [
+            {
+              "bahnar": "Gô oh ăn ih pơgang, et pêng amăng mĩnh nar, mĩnh amăng puăn găr.",
+              "vietnamese": "Để em cấp thuốc cho anh, uống ngày 3 lần, mỗi lần 4 viên.",
+              "note": "Trang 151"
+            }
+          ]
+        },
+        {
+          "pattern_id": "PAT_09",
+          "structure": "Pơvân + [Chủ thể] + [Hành động vâng lời / Vệ sinh / Tuyển truyền]",
+          "meaning": "Vận động / Nhắc nhở [Ai đó] làm [việc gì]",
+          "explanation": "Dùng trong các câu khẩu hiệu, tuyên truyền lối sống hoặc phòng bệnh.",
+          "examples": [
+            {
+              "bahnar": "Pơvân kon pơlěi oěi sa rơgoh, et rơgoh, chong pơ anguaih pơlôch hơngenh.",
+              "vietnamese": "Vận động dân làng ăn sạch, uống sạch, phát quang diệt muỗi.",
+              "note": "Trang 151"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Cấu trúc Bổ sung & Phủ định Căn bản (Ưh kơ... mă adoi...)",
+      "patterns": [
+        {
+          "pattern_id": "PAT_10",
+          "structure": "[Chủ ngữ] + ưh kơ + [Động từ 1] + mă adoi + [Động từ 2]",
+          "meaning": "[Chủ ngữ] không chỉ [làm A] mà còn [làm B]",
+          "explanation": "Dùng để nhấn mạnh quy mô, tính chất mở rộng của hành động.",
+          "examples": [
+            {
+              "bahnar": "Dŭch ưh kơ đěi bơtho mĩnh tŏ lờm hla bơar mă adoi tơlang ăn đe kon hŏk băt...",
+              "vietnamese": "Cô không chỉ giảng dạy trong sách vở mà còn giảng cho học sinh biết...",
+              "note": "Trang 143"
+            }
+          ]
+        },
+        {
+          "pattern_id": "PAT_11",
+          "structure": "[Chủ ngữ] + nẽ + mâng + [Lời nói / Lời xúi giục xấu]",
+          "meaning": "[Chúng ta / Ai đó] không được nghe [lời xấu / xúi giục]",
+          "explanation": "Cấu trúc răn dạy, cảnh báo an ninh hoặc đạo đức.",
+          "examples": [
+            {
+              "bahnar": "Bỡn nẽ mâng nâr la khŭl chữ kơnễ kơdâu năm teh đak anguaih.",
+              "vietnamese": "Chúng ta không nghe lời xúi giục của kẻ xấu chạy ra nước ngoài.",
+              "note": "Trang 156"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

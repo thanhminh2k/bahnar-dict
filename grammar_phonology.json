@@ -1,0 +1,39 @@
+{
+  "alphabet": {
+    "total_letters": 25,
+    "creator": "Nây Der (sáng tạo năm 1922)",
+    "legal_basis": "Quyết định số 03 ngày 28/10/1981 của UBND tỉnh Gia Lai–Kon Tum",
+    "notes": "Bộ chữ dùng chung thống nhất cho tiếng Jrai, Bahnar, Sơđăng."
+  },
+  "phonology_and_orthography": {
+    "vowels": "Gồm các nguyên âm đơn, nguyên âm dài/ngắn có dấu phụ (như ŭ, ŏ, ĕ...)",
+    "consonants": "Có các phụ âm bật hơi, phụ âm mũi và phụ âm tiền thanh môn hóa (ɓ, ɗ...)"
+  },
+  "grammar_rules": [
+    {
+      "keyword": "Ameh / Uh kơ ameh / Tôch hơreh",
+      "type": "Preference Scale",
+      "usage": "Ameh = Thích; Uh kơ ameh = Không thích; Tôch hơreh = Rất ghét."
+    },
+    {
+      "keyword": "Nhen",
+      "type": "Comparison Particle",
+      "usage": "Dùng trong so sánh (như/giống như). Ví dụ: 'Bar anu ɓa nhen ɓôi hla lăm ɓai' (Hai đứa mình như đống lá trong sọt)."
+    },
+    {
+      "keyword": "Tơ- (Tiền tố)",
+      "type": "Reciprocal Prefix",
+      "usage": "Tiền tố đứng trước động từ thể hiện hành động tương hỗ (vd: Tơ-iŏk ɓăl = Lấy nhau, Tơ-pơma = Nói chuyện với nhau)."
+    }
+  ],
+  "cultural_architecture_notes": {
+    "traditional_house": "Nhà sàn (Hnam kơjŭng) và Nhà Rông (Hnam Rông) là không gian sinh hoạt cộng đồng và gia đình.",
+    "customary_governance": "Quy ước làng (Khôi juăt pơlĕi) điều hành việc quản lý rừng cộng đồng, bảo vệ lâm sản và xử phạt vi phạm nghiêm ngặt."
+  },
+  "cultural_customs_and_traditions": {
+    "gong_culture": "Cồng chiêng (Chĭng chêng) được UNESCO công nhận năm 2005. Được đánh trong các lễ hội mừng lúa mới, bỏ mả (ɓrữ), đâm trâu (kŏh sa kơpô), lên nhà mới.",
+    "matriarchy_marriage": "Xã hội Bahnar theo chế độ mẫu hệ (Pang drŏ kăn). Phụ nữ chủ động chọn người yêu. Chàng trai ở dâu 1-2 năm trước khi hai vợ chồng tự lập.",
+    "burial_customs": "Người cùng dòng mẹ xưa kia chôn chung một huyệt. Tục nối dây (lấy anh chồng/chị vợ khi người phối ngẫu qua đời) chỉ được thực hiện sau lễ Bỏ mả (Ɓrữ).",
+    "traditional_costume": "Nam giới đóng khố (Kopen) hình chữ T, mặc áo thêu (Ao kơteh). Nữ giới mặc váy chàm (Hơɓăn) không khâu liền ống và mặc áo bó sát nách."
+  }
+}

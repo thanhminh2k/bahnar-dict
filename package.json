@@ -1,0 +1,8 @@
+{
+  "name": "bahnar-dict",
+  "private": true,
+  "type": "module",
+  "scripts": { "start": "node server.mjs" },
+  "engines": { "node": ">=20.6" },
+  "dependencies": { "express": "^4.19.2" }
+}

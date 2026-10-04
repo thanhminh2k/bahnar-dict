@@ -1,0 +1,288 @@
+{
+  "metadata": {
+    "scope": "Trang 16 - End (Bổ sung chi tiết toàn bộ các trang)",
+    "language_pair": "Bahnar - Vietnamese"
+  },
+  "sentences_database": [
+    {
+      "topic": "Đời sống hàng ngày & Sinh hoạt (Trang 16 - 31)",
+      "sentences": [
+        {
+          "bahnar": "Ĭnh năm chă sa ba rim nar.",
+          "vietnamese": "Tôi đi tìm ăn cơm mỗi ngày.",
+          "note": "Trang 16"
+        },
+        {
+          "bahnar": "Kon pơlěi et dak rơgoh lờm hnam.",
+          "vietnamese": "Dân làng uống nước sạch trong nhà.",
+          "note": "Trang 18"
+        },
+        {
+          "bahnar": "Adoi tep lờm hnam kră.",
+          "vietnamese": "Đều ngủ ở trong nhà sàn.",
+          "note": "Trang 20"
+        },
+        {
+          "bahnar": "Unh pơhĭng lờm hnam choh jang.",
+          "vietnamese": "Ngọn lửa cháy lấp lánh trong nhà làm việc.",
+          "note": "Trang 28"
+        },
+        {
+          "bahnar": "Mặt nar 'nha hrơih pơlěi pơla.",
+          "vietnamese": "Mặt trời chiếu sáng khắp buôn làng.",
+          "note": "Trang 30"
+        }
+      ]
+    },
+    {
+      "topic": "Gia đình & Thân tộc (Trang 32 - 44)",
+      "sentences": [
+        {
+          "bahnar": "Mě bă ĭnh năm jang mir sa rim nar.",
+          "vietnamese": "Cha mẹ tôi đi làm rẫy mỗi ngày.",
+          "note": "Trang 32"
+        },
+        {
+          "bahnar": "Bok yă oěi lờm hnam wěi lăng kon mon.",
+          "vietnamese": "Ông bà ở trong nhà trông nom các cháu.",
+          "note": "Trang 35"
+        },
+        {
+          "bahnar": "Kon hŏk hơgěi wěi mêm mě bă păng bok yă.",
+          "vietnamese": "Con ngoan biết yêu thương cha mẹ và ông bà.",
+          "note": "Trang 38"
+        },
+        {
+          "bahnar": "Anhŏng păng oh atŭm sa ba, atŭm hŏk lờm hnam.",
+          "vietnamese": "Anh em cùng nhau ăn cơm, cùng nhau học ở trong nhà.",
+          "note": "Trang 40"
+        },
+        {
+          "bahnar": "Mon chă mi bok pơlěi pơla.",
+          "vietnamese": "Cháu đi tìm chú ở trong buôn làng.",
+          "note": "Trang 44"
+        }
+      ]
+    },
+    {
+      "topic": "Trồng trọt & Lao động Sản xuất (Trang 45 - 69)",
+      "sentences": [
+        {
+          "bahnar": "Mě bă năm jang mir choh ba hơbo.",
+          "vietnamese": "Mẹ cha đi làm rẫy trồng lúa ngô.",
+          "note": "Trang 45"
+        },
+        {
+          "bahnar": "Bơngai pơlěi choh sre pơtăm ba.",
+          "vietnamese": "Người dân làng cày ruộng trồng lúa.",
+          "note": "Trang 48"
+        },
+        {
+          "bahnar": "Ba hơbo lờm mir hơba hơbâp jĭ lơ tôch.",
+          "vietnamese": "Lúa ngô ở trên rẫy tươi tốt rất nhiều.",
+          "note": "Trang 52"
+        },
+        {
+          "bahnar": "Bơngai pơlěi yua anhik păng tơgăk choh teh.",
+          "vietnamese": "Người dân làng dùng cuốc và rựa để cuốc đất.",
+          "note": "Trang 56"
+        },
+        {
+          "bahnar": "Bri kông pơlěi bỡn liĕm kơchăp.",
+          "vietnamese": "Rừng núi quê hương chúng ta rất đẹp.",
+          "note": "Trang 58"
+        },
+        {
+          "bahnar": "Trong năm tơ pơlěi ling kơching.",
+          "vietnamese": "Con đường đi về buôn làng bằng phẳng, rộng rãi.",
+          "note": "Trang 68"
+        }
+      ]
+    },
+    {
+      "topic": "Chăn nuôi & Động vật (Trang 70 - 91)",
+      "sentences": [
+        {
+          "bahnar": "Bă pơwơik rơpu lơmo năm sa chơdrŏng lờm bri.",
+          "vietnamese": "Cha chăn thả trâu bò đi ăn cỏ ở trong rừng.",
+          "note": "Trang 70"
+        },
+        {
+          "bahnar": "Lơmo rơpu pơlěi bỡn lơ kơchăp.",
+          "vietnamese": "Đàn bò trâu của làng chúng ta rất đông.",
+          "note": "Trang 72"
+        },
+        {
+          "bahnar": "Yěr ech pơrong lờm kơdră hnam.",
+          "vietnamese": "Gà lợn nuôi ở trong sân nhà.",
+          "note": "Trang 78"
+        },
+        {
+          "bahnar": "Chěm bơrok hơnhŏk hơnhơr xiam along.",
+          "vietnamese": "Chim hót líu lo trên cành cây.",
+          "note": "Trang 85"
+        },
+        {
+          "bahnar": "Ka hơlen l lờm dak krông.",
+          "vietnamese": "Cá bơi lội tung tăng dưới nước sông.",
+          "note": "Trang 88"
+        }
+      ]
+    },
+    {
+      "topic": "Trường học, Thầy cô & Học tập (Trang 92 - 128)",
+      "sentences": [
+        {
+          "bahnar": "Trưng hŏk pơlěi bỡn rơnơng păng liĕm.",
+          "vietnamese": "Trường học làng chúng ta khang trang và đẹp đẽ.",
+          "note": "Trang 92"
+        },
+        {
+          "bahnar": "Dŭch bơtho mêm păng bơtho đe kon hŏk hơgěi.",
+          "vietnamese": "Thầy cô giáo yêu thương và dạy dỗ học sinh giỏi giang.",
+          "note": "Trang 95"
+        },
+        {
+          "bahnar": "Kon hŏk chơgăm hŏk, chih hla bơar chơglăm.",
+          "vietnamese": "Học sinh chăm chỉ học tập, viết sách vở sạch sẽ.",
+          "note": "Trang 98"
+        },
+        {
+          "bahnar": "Rim nar kon hŏk năm trung hŏk hơgěi.",
+          "vietnamese": "Mỗi ngày học sinh đi đến trường chăm chỉ.",
+          "note": "Trang 108"
+        },
+        {
+          "bahnar": "Bak si lờm hnam pơgang khăm lăng kơ bơngai jĭ rơgoh.",
+          "vietnamese": "Bác sĩ trong trạm y tế khám bệnh cho người bệnh chu đáo.",
+          "note": "Trang 120"
+        }
+      ]
+    },
+    {
+      "topic": "Lao động & Sản xuất Hiện đại (Trang 129 - 138)",
+      "sentences": [
+        {
+          "bahnar": "Kơna kơchăp kơ tơdrong jang sa choh pơtăm kơ đe kon kông tơpă jĭ ba arăng, bum, hơbo păng dôm tơmam arih sa khul kăl pơwih ăn tơdrong erih rim nar.",
+          "vietnamese": "Cho nên hoạt động sản xuất trồng trọt chủ yếu của đồng bào dân tộc thiểu số là lúa tẻ, khoai, ngô và các loại lương thực phục vụ đời sống hàng ngày.",
+          "note": "Trang 129"
+        },
+        {
+          "bahnar": "Mă hơdrol xỡ bơngai Bahnar yua tơpă jĭ tơgăk kơna tơdrong chong bri koh along, anhik choh teh păng along jơmŭl kơna bet trôm tah hơdrěch.",
+          "vietnamese": "Trước đây người Ba Na chủ yếu dùng rựa để phát rừng chặt cây, cuốc xới đất và dùng gậy chọc lỗ để tra hạt giống.",
+          "note": "Trang 129"
+        },
+        {
+          "bahnar": "Ră hơ'nhao dang ěi đe kon kông đěi hơbâp chŏh jang yua kơmăi lăm choh jang sa, kơna pơjing tơmam drăm lơ kơchăp.",
+          "vietnamese": "Hiện nay đồng bào đã biết áp dụng máy móc vào sản xuất, tạo ra nhiều sản vật hơn.",
+          "note": "Trang 129"
+        },
+        {
+          "bahnar": "Tơdrong sut pơngot dă biỡ tơnuh dang ěi jĭ mĩnh tơdrong kăl pơjing pơlěi pơla mât tơdrong jang sa tơpăt.",
+          "vietnamese": "Công tác xóa đói giảm nghèo hiện nay là một nhiệm vụ quan trọng trong việc đưa làng xã phát triển đúng hướng.",
+          "note": "Trang 133"
+        }
+      ]
+    },
+    {
+      "topic": "Thương mại, Dịch vụ & Xã hội (Trang 139 - 150)",
+      "sentences": [
+        {
+          "bahnar": "Tơdrong pơdro tơmam chă juang tơmam dŏl pơjing pơlěi pơla păng pơwih ăn bơngai chă juang tơmam.",
+          "vietnamese": "Hoạt động thương mại dịch vụ đang phát triển ở các vùng dân cư và phục vụ cho du khách.",
+          "note": "Trang 139"
+        },
+        {
+          "bahnar": "Đe kon kông rim pơlěi chă pơm suang, tôn chĩnh chêng tơgŭm lăm tơdrong pơjing kinh tễ.",
+          "vietnamese": "Bà con ở các làng tổ chức múa xoang, đánh cồng chiêng góp phần phát triển kinh tế.",
+          "note": "Trang 139"
+        },
+        {
+          "bahnar": "Khul drŏ kăn păng khul đe kră tơgop jên pơyua tơgŭm dôm lu ŭnh hnam tơnuh lăm pơlěi.",
+          "vietnamese": "Hội phụ nữ và Hội người cao tuổi quyên góp tiền hỗ trợ các hộ gia đình nghèo trong làng.",
+          "note": "Trang 132"
+        },
+        {
+          "bahnar": "Dŭch bơtho jĭ bơngai ĭnh mêm tôch bơ nê.",
+          "vietnamese": "Cô giáo là người mà em yêu quý nhất.",
+          "note": "Trang 142"
+        },
+        {
+          "bahnar": "Nơr bơch dŭch bơtho dim rơnim păng liĕm tơpă, mơng hiôk păng re tih.",
+          "vietnamese": "Lời giảng của cô giáo thật diễn cảm, nhẹ nhàng và rất đẹp, nghe rất hay và rõ ràng.",
+          "note": "Trang 143"
+        },
+        {
+          "bahnar": "Dŭch ưh kơ đěi bơtho mĩnh tŏ lờm hla bơar mă adoi tơlang ăn đe kon hŏk băt tơdrong arih sa kơ bơngai pơlěi.",
+          "vietnamese": "Cô không chỉ giảng dạy trong sách vở mà còn giảng cho học sinh biết về cuộc sống của người dân làng.",
+          "note": "Trang 143"
+        },
+        {
+          "bahnar": "Ĭnh chơgăm hŏk, băt yom nơr bơngai 'lŏ păng adrin hŏk hơgěi mônh jing bơngai đěi yua lỡm teh đak.",
+          "vietnamese": "Em chăm chỉ học tập, biết vâng lời người lớn và cố gắng học giỏi để trở thành người có ích cho đất nước.",
+          "note": "Trang 143"
+        },
+        {
+          "bahnar": "Rơgei đong! Dôm kon hŏk hơtŭch sơnăm kơ trung hŏk hơdrol xỡ đang adrin hŏk hơgěi lăm kơjung.",
+          "vietnamese": "Giỏi lắm! Các em học sinh cuối cấp trung học trước đây đã cố gắng học giỏi ở lớp cấp ba.",
+          "note": "Trang 144"
+        }
+      ]
+    },
+    {
+      "topic": "Y tế, Phương hướng & An ninh Đoàn kết (Trang 151 - End)",
+      "sentences": [
+        {
+          "bahnar": "Mât lăm hnam khăm lăng jĭ, bak si đih khăm lăng kơ bơngai jĭ rĭnh.",
+          "vietnamese": "Vào trong bệnh viện, bác sĩ đang khám bệnh cho bệnh nhân.",
+          "note": "Trang 151"
+        },
+        {
+          "bahnar": "Ih đěi hơdrap kơ tŏ đěch, gô oh ăn ih pơgang, et pêng amăng mĩnh nar, mĩnh amăng puăn găr.",
+          "vietnamese": "Anh bị cảm nắng nhẹ, để em cấp thuốc cho anh, uống ngày 3 lần, mỗi lần 4 viên.",
+          "note": "Trang 151"
+        },
+        {
+          "bahnar": "Pơvân kon pơlěi oěi sa rơgoh, et rơgoh, chong pơ anguaih pơlôch hơngenh păng tep đěi kơmŭng.",
+          "vietnamese": "Vận động dân làng ăn sạch, uống sạch, phát quang diệt muỗi và ngủ phải giăng mùng.",
+          "note": "Trang 151"
+        },
+        {
+          "bahnar": "Năm tơ păt trong 'nê, kuěch gah angiěo jĭ 'năr hnam pơgang, tơklă păng trưng hŏk.",
+          "vietnamese": "Đi thẳng đường này, rẽ bên trái là tới trạm y tế, đối diện với trường học.",
+          "note": "Trang 153"
+        },
+        {
+          "bahnar": "Hnam jơngih oěi tŏk bŏk tơtil kơ hnam pơgang păng gah rŏng kơ trưng hŏk.",
+          "vietnamese": "Nhà cộng đồng nằm ở giữa, bên cạnh trạm y tế và ở phía sau trường học.",
+          "note": "Trang 153"
+        },
+        {
+          "bahnar": "Wěi lăng lăm teh đak kojăp jĭ tơdrong jang kăl kơ rim bơngai kon pơlěi.",
+          "vietnamese": "Bảo vệ an ninh Tổ quốc là nhiệm vụ quan trọng của mỗi người dân.",
+          "note": "Trang 155"
+        },
+        {
+          "bahnar": "Bỡn nẽ mâng nâr la khŭl chữ kơnễ kơdâu năm teh đak anguaih hlor war teh đak.",
+          "vietnamese": "Chúng ta không nghe lời xúi giục của kẻ xấu chạy ra nước ngoài vượt biên trái phép.",
+          "note": "Trang 156"
+        },
+        {
+          "bahnar": "Rim hơdrũng hơdrěch kon kông atŭm tơguăt tơguăl pôm nơr bỡ don tơiung pơjing teh đak Wiễt Nam.",
+          "vietnamese": "Các dân tộc thiểu số cùng đoàn kết một lòng một ý xây dựng đất nước Việt Nam.",
+          "note": "Trang 158"
+        },
+        {
+          "bahnar": "Adoi kon mon kon xŏu Wiễt Nam adoi anhŏng oh pôm mě bă.",
+          "vietnamese": "Đều là con cháu Việt Nam, đều là anh em ruột thịt một nhà.",
+          "note": "Trang 159"
+        },
+        {
+          "bahnar": "Lĭnh pơlěi păng bỗ đỗi nuih kotang tơblah ayăt wěi wêr pơlěi pơla.",
+          "vietnamese": "Dân quân và bộ đội anh dũng chiến đấu chống giặc ngoại xâm giữ gìn buôn làng.",
+          "note": "Trang 165"
+        }
+      ]
+    }
+  ]
+}
