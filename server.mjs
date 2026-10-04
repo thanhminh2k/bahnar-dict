@@ -110,7 +110,7 @@ app.set("trust proxy", 1); // sau proxy của Render/Railway để lấy đúng 
 app.use(express.json({ limit: "10kb" }));
 
 // Chỉ phục vụ đúng index.html, KHÔNG phục vụ cả thư mục (tránh lộ .env, server.mjs)
-const indexPath = fileURLToPath(new URL("./index.html", import.meta.url));
+const indexPath = fileURLToPath(new URL("./public/index.html", import.meta.url));
 app.get("/", (req, res) => {
   if (!existsSync(indexPath)) return res.status(404).send("Chưa có index.html. Chạy: node build.mjs");
   res.sendFile(indexPath);

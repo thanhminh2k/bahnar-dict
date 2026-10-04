@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Từ điển Bahnar – Việt</title>
+<style>
+  :root { --bg:#faf8f4; --fg:#222; --muted:#6b6b6b; --card:#fff; --line:#e4dfd5; --accent:#b4531f; --chip:#f3ece2; --warn:#fff3cd; --warnfg:#6b5200; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#1b1a18; --fg:#ece8e1; --muted:#9a958b; --card:#25231f; --line:#3a3731; --accent:#e58a54; --chip:#312e28; --warn:#3b3210; --warnfg:#ecd98a; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  main { max-width:820px; margin:0 auto; padding:16px; }
+  h1 { font-size:1.4rem; margin:8px 0 4px; }
+  .sub { color:var(--muted); margin:0 0 12px; font-size:.9rem; }
+  .warn { background:var(--warn); color:var(--warnfg); padding:8px 12px; border-radius:8px; font-size:.88rem; margin-bottom:14px; }
+  .tabs { display:flex; gap:8px; margin-bottom:10px; }
+  .tab { flex:1; padding:9px; border:1px solid var(--line); background:var(--card); color:var(--fg); border-radius:8px; cursor:pointer; font:inherit; }
+  .tab[aria-pressed="true"] { background:var(--accent); border-color:var(--accent); color:#fff; }
+  textarea { width:100%; min-height:84px; padding:10px 12px; border:1px solid var(--line); border-radius:8px; background:var(--card); color:var(--fg); font:inherit; resize:vertical; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px 14px; margin-top:12px; }
+  .card h2 { font-size:.8rem; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); margin:0 0 8px; font-weight:600; }
+  .draft { font-size:1.1rem; }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; }
+  .chip { background:var(--chip); border-radius:8px; padding:4px 9px; font-size:.92rem; }
+  .chip b { color:var(--accent); font-weight:600; }
+  .chip.unk { outline:1px dashed var(--muted); color:var(--muted); }
+  .chip.loose { opacity:.55; }
+  .entry { padding:7px 0; border-top:1px solid var(--line); }
+  .entry:first-of-type { border-top:0; }
+  .entry b { color:var(--accent); }
+  .ex { color:var(--muted); font-size:.88rem; }
+  .sent { padding:7px 0; border-top:1px solid var(--line); }
+  .sent:first-of-type { border-top:0; }
+  .pg { color:var(--muted); font-size:.8rem; }
+  button.ai { margin-top:12px; padding:10px 14px; border:0; border-radius:8px; background:var(--accent); color:#fff; font:inherit; cursor:pointer; }
+  button.ai:disabled { opacity:.6; cursor:wait; }
+  .err { color:#c0392b; }
+  details { margin-top:12px; }
+  summary { cursor:pointer; color:var(--muted); }
+  .empty { color:var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Từ điển Bahnar – Việt</h1>
+  <p class="sub">Tra từ và dịch từng từ hai chiều, dịch cả câu bằng AI (chiều Bahnar → Việt).</p>
+  <div class="warn">Bản thử nghiệm: dữ liệu số hóa từ giáo trình và từ điển, chưa được người bản ngữ kiểm tra. Từ chưa có trong từ điển được đánh dấu [?]. Câu bạn nhập vào nút “Dịch cả câu bằng AI” sẽ được gửi tới nhà cung cấp AI.</div>
+
+  <div class="tabs">
+    <button class="tab" id="tab-bv" aria-pressed="true">Bahnar → Việt</button>
+    <button class="tab" id="tab-vb" aria-pressed="false">Việt → Bahnar</button>
+  </div>
+  <textarea id="q" placeholder="Gõ từ hoặc câu… (không cần gõ đúng dấu)" autofocus></textarea>
+  <div id="out"></div>
+
+  <details>
+    <summary>Mẫu câu trong giáo trình</summary>
+    <div id="patterns"></div>
+  </details>
+</main>
+
+<script>
+/*__ENGINE__*/
+</script>
+<script>
+window.__DATA__ = /*__DATA__*/;
+</script>
+<script>
+(function () {
+  var D = window.__DATA__;
+
+  // Chiều Việt → Bahnar: tách nghĩa theo / , ; và bỏ "con/cái/chiếc" đứng đầu
+  var CLASSIFIERS = /^(con|cái|chiếc)\s+/i;
+  function vbRowsOf(rows) {
+    var out = [];
+    rows.forEach(function (r) {
+      r.viet.split(/\s*[\/,;]\s*/).map(function (s) { return s.trim(); }).filter(Boolean).forEach(function (part) {
+        out.push(Object.assign({}, r, { viet: part }));
+        var bare = part.replace(CLASSIFIERS, "");
+        if (bare !== part && bare) out.push(Object.assign({}, r, { viet: bare }));
+      });
+    });
+    return out;
+  }
+
+  var idx = { bv: buildIndex(D.vocab, "bv"), vb: buildIndex(vbRowsOf(D.vocab), "vb") };
+  var dir = "bv";
+  var $q = document.getElementById("q");
+  var $out = document.getElementById("out");
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function similarSentences(q, n) {
+    var tokens = splitWords(q).map(fold);
+    if (!tokens.length) return [];
+    var set = new Set(tokens);
+    return D.sentences
+      .map(function (s) {
+        var text = dir === "bv" ? s.bana : s.viet;
+        var seen = new Set(splitWords(text).map(fold));
+        var hit = 0;
+        set.forEach(function (t) { if (seen.has(t)) hit++; });
+        return { s: s, hit: hit };
+      })
+      .filter(function (x) { return x.hit > 0; })
+      .sort(function (a, b) { return b.hit - a.hit; })
+      .slice(0, n)
+      .map(function (x) { return x.s; });
+  }
+
+  function segmentsHtml(sa) {
+    return '<div class="chips">' + sa.segments.map(function (s) {
+      if (s.entries.length) {
+        return '<span class="chip' + (s.loose ? " loose" : "") + '"><b>' + esc(s.text) + "</b> = " + esc(s.entries[0].meanings[0]) + "</span>";
+      }
+      var sug = s.suggestions.length ? " · gợi ý: " + esc(s.suggestions.map(function (g) { return g.display; }).join(", ")) : "";
+      return '<span class="chip unk">' + esc(s.text) + " [?]" + sug + "</span>";
+    }).join("") + "</div>";
+  }
+
+  function render() {
+    var q = $q.value.trim();
+    if (!q) { $out.innerHTML = '<p class="empty">Nhập từ hoặc câu để bắt đầu tra.</p>'; return; }
+    var a = analyze(idx[dir], q, dir);
+    var html = "";
+
+    html += '<div class="card"><h2>Dịch từng từ (nháp)</h2><div class="draft">' + esc(a.draft || "—") + "</div>";
+    a.sentences.forEach(function (sa) { html += '<div style="margin-top:10px">' + segmentsHtml(sa) + "</div>"; });
+    html += "</div>";
+
+    if (dir === "bv" && splitWords(q).length) {
+      html += '<button class="ai" id="ai">Dịch cả câu bằng AI</button><div id="ai-out"></div>';
+    }
+
+    if (a.results.length) {
+      html += '<div class="card"><h2>Mục từ liên quan</h2>' + a.results.slice(0, 30).map(function (g) {
+        var ex = g.examples.length ? '<div class="ex">VD: ' + esc(g.examples[0]) + "</div>" : "";
+        return '<div class="entry"><b>' + esc(g.display) + "</b> — " + esc(g.meanings.join("; ")) + ex + "</div>";
+      }).join("") + "</div>";
+    }
+
+    var ss = similarSentences(q, 5);
+    if (ss.length) {
+      html += '<div class="card"><h2>Câu mẫu gần nhất</h2>' + ss.map(function (s) {
+        return '<div class="sent"><div>' + esc(s.bana) + "</div><div class=\"ex\">" + esc(s.viet) + ' <span class="pg">(' + esc(s.page) + ")</span></div></div>";
+      }).join("") + "</div>";
+    }
+
+    $out.innerHTML = html;
+    var btn = document.getElementById("ai");
+    if (btn) btn.onclick = function () { askAI(q, btn); };
+  }
+
+  function askAI(q, btn) {
+    var box = document.getElementById("ai-out");
+    btn.disabled = true;
+    box.innerHTML = '<div class="card"><h2>Bản dịch AI</h2>Đang dịch…</div>';
+    fetch("/api/translate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text: q })
+    }).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; });
+    }).then(function (x) {
+      if (x.ok && x.j.translation) {
+        box.innerHTML = '<div class="card"><h2>Bản dịch AI' + (x.j.cached ? " (đã lưu)" : "") + '</h2><div class="draft">' + esc(x.j.translation) + '</div><div class="ex" style="margin-top:6px">AI có thể sai với câu xa dữ liệu. Hãy đối chiếu với phần dịch từng từ ở trên.</div></div>';
+      } else {
+        box.innerHTML = '<div class="card"><h2>Bản dịch AI</h2><span class="err">' + esc(x.j.error || "Không dịch được lúc này.") + "</span></div>";
+      }
+    }).catch(function () {
+      box.innerHTML = '<div class="card"><h2>Bản dịch AI</h2><span class="err">Không kết nối được máy chủ. Hãy mở trang qua địa chỉ của máy chủ, không mở trực tiếp file.</span></div>';
+    }).then(function () { btn.disabled = false; });
+  }
+
+  function setDir(d) {
+    dir = d;
+    document.getElementById("tab-bv").setAttribute("aria-pressed", d === "bv");
+    document.getElementById("tab-vb").setAttribute("aria-pressed", d === "vb");
+    render();
+  }
+  document.getElementById("tab-bv").onclick = function () { setDir("bv"); };
+  document.getElementById("tab-vb").onclick = function () { setDir("vb"); };
+
+  var timer;
+  $q.addEventListener("input", function () { clearTimeout(timer); timer = setTimeout(render, 150); });
+
+  document.getElementById("patterns").innerHTML = D.patterns.map(function (p) {
+    var ex = (p.examples || []).slice(0, 1).map(function (e) {
+      return '<div class="ex">VD: ' + esc(e.bahnar) + " — " + esc(e.vietnamese) + " (" + esc(e.note) + ")</div>";
+    }).join("");
+    return '<div class="entry"><b>' + esc(p.pattern_id) + "</b> " + esc(p.structure) + "<br>" + esc(p.meaning) + ex + "</div>";
+  }).join("");
+
+  render();
+})();
+</script>
+</body>
+</html>

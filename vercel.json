@@ -1,0 +1,8 @@
+{
+  "functions": {
+    "api/translate.js": {
+      "maxDuration": 30,
+      "includeFiles": "*.json"
+    }
+  }
+}
