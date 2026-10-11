@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Từ điển Bahnar – Việt</title>
+<title>Dịch Việt – Bahnar</title>
 <style>
   :root { --bg:#faf8f4; --fg:#222; --muted:#6b6b6b; --card:#fff; --line:#e4dfd5; --accent:#b4531f; --chip:#f3ece2; --warn:#fff3cd; --warnfg:#6b5200; }
   @media (prefers-color-scheme: dark) {
@@ -44,13 +44,13 @@
 </head>
 <body>
 <main>
-  <h1>Từ điển Bahnar – Việt</h1>
-  <p class="sub">Tra từ và dịch từng từ hai chiều, dịch cả câu bằng AI (chiều Bahnar → Việt).</p>
+  <h1>Dịch Việt → Bahnar</h1>
+  <p class="sub">Tra từ và dịch câu Việt – Bahnar hai chiều.</p>
   <div class="warn">Bản thử nghiệm: dữ liệu số hóa từ giáo trình và từ điển, chưa được người bản ngữ kiểm tra. Từ chưa có trong từ điển được đánh dấu [?]. Câu bạn nhập vào nút “Dịch cả câu bằng AI” sẽ được gửi tới nhà cung cấp AI.</div>
 
   <div class="tabs">
-    <button class="tab" id="tab-bv" aria-pressed="true">Bahnar → Việt</button>
-    <button class="tab" id="tab-vb" aria-pressed="false">Việt → Bahnar</button>
+    <button class="tab" id="tab-bv" aria-pressed="false">Bahnar → Việt</button>
+    <button class="tab" id="tab-vb" aria-pressed="true">Việt → Bahnar</button>
   </div>
   <textarea id="q" placeholder="Gõ từ hoặc câu… (không cần gõ đúng dấu)" autofocus></textarea>
   <div id="out"></div>
@@ -86,7 +86,7 @@ window.__DATA__ = /*__DATA__*/;
   }
 
   var idx = { bv: buildIndex(D.vocab, "bv"), vb: buildIndex(vbRowsOf(D.vocab), "vb") };
-  var dir = "bv";
+  var dir = "vb";
   var $q = document.getElementById("q");
   var $out = document.getElementById("out");
 
@@ -134,7 +134,7 @@ window.__DATA__ = /*__DATA__*/;
     a.sentences.forEach(function (sa) { html += '<div style="margin-top:10px">' + segmentsHtml(sa) + "</div>"; });
     html += "</div>";
 
-    if (dir === "bv" && splitWords(q).length) {
+    if (splitWords(q).length) {
       html += '<button class="ai" id="ai">Dịch cả câu bằng AI</button><div id="ai-out"></div>';
     }
 
@@ -164,7 +164,7 @@ window.__DATA__ = /*__DATA__*/;
     fetch("/api/translate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text: q })
+      body: JSON.stringify({ text: q, direction: dir })
     }).then(function (r) {
       return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; });
     }).then(function (x) {

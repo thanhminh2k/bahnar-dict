@@ -385,7 +385,7 @@ export function analyzeSentence(index, query, direction) {
   }));
   const draft = segments
     .filter((s) => !s.loose)
-    .map((s) => (s.entries.length > 0 ? s.entries[0].meanings[0] : `[${s.text}]`))
+    .map((s) => (s.entries.length > 0 ? s.entries[0].meanings[0] : s.text))
     .join(" ");
 
   return { text: query, words, phrase, terms, results, segments, draft };

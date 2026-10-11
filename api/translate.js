@@ -9,7 +9,7 @@ import { analyze, splitWords, fold } from "../dictEngine.js";
  *   RATE_LIMIT_PER_HOUR = số lượt/IP/giờ (mặc định 30)
  */
 const PROVIDERS = {
-  groq: { url: "https://api.groq.com/openai/v1/chat/completions", key: "GROQ_API_KEY", model: "llama-3.3-70b-versatile" },
+  groq: { url: "https://api.groq.com/openai/v1/chat/completions", key: "GROQ_API_KEY", model: "openai/gpt-oss-120b" },
   openrouter: { url: "https://openrouter.ai/api/v1/chat/completions", key: "OPENROUTER_API_KEY", model: "meta-llama/llama-3.3-70b-instruct:free" },
   cerebras: { url: "https://api.cerebras.ai/v1/chat/completions", key: "CEREBRAS_API_KEY", model: "llama-3.3-70b" },
   gemini: { url: "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions", key: "GEMINI_API_KEY", model: "gemini-2.5-flash" },
@@ -17,7 +17,10 @@ const PROVIDERS = {
 
 const providerName = (process.env.AI_PROVIDER || "groq").toLowerCase();
 const provider = PROVIDERS[providerName];
-const MODEL = process.env.AI_MODEL || provider?.model;
+const MODEL =
+  process.env[`${providerName.toUpperCase()}_MODEL`] ||
+  process.env.AI_MODEL ||
+  provider?.model;
 
 async function callLLM(prompt) {
   const r = await fetch(provider.url, {
@@ -39,10 +42,13 @@ async function callLLM(prompt) {
 let db;
 const getDb = () => (db ??= buildIndexes());
 
-function similar(text, n = 5) {
+function similar(text, direction, n = 5) {
   const q = new Set(splitWords(text).map(fold));
   return getDb()
-    .sentences.map((s) => ({ s, hit: splitWords(s.bana).filter((w) => q.has(fold(w))).length }))
+    .sentences.map((s) => {
+      const source = direction === "vb" ? s.viet : s.bana;
+      return { s, source, hit: splitWords(source).filter((w) => q.has(fold(w))).length };
+    })
     .filter((x) => x.hit > 0)
     .sort((a, b) => b.hit - a.hit)
     .slice(0, n)
@@ -71,8 +77,11 @@ export default async function handler(req, res) {
   const text = String(req.body?.text ?? "").slice(0, 300);
   if (!text.trim()) return res.status(400).json({ error: "Thiếu nội dung" });
 
-  const an = analyze(getDb().bv, text, "bv");
-  const key = splitWords(text).join(" ");
+  const direction = req.body?.direction === "vb" ? "vb" : "bv";
+  const sourceLanguage = direction === "vb" ? "tiếng Việt" : "tiếng Bahnar";
+  const targetLanguage = direction === "vb" ? "tiếng Bahnar" : "tiếng Việt";
+  const an = analyze(getDb()[direction], text, direction);
+  const key = `${direction}:${splitWords(text).join(" ")}`;
   if (cache.has(key)) return res.json({ translation: cache.get(key), draft: an.draft, cached: true });
 
   const ip = String(req.headers["x-forwarded-for"] || "").split(",")[0].trim() || "unknown";
@@ -82,20 +91,43 @@ export default async function handler(req, res) {
     .filter((s) => s.entries[0])
     .map((s) => `${s.text} = ${s.entries[0].meanings.slice(0, 3).join("; ")}`)
     .join("\n");
-  const examples = similar(text).map((s) => `${s.bana} => ${s.viet}`).join("\n");
+  const examples = similar(text, direction)
+    .map((s) => direction === "vb" ? `${s.viet} => ${s.bana}` : `${s.bana} => ${s.viet}`)
+    .join("\n");
 
-  const prompt = `Dịch câu tiếng Bahnar sang tiếng Việt. Chỉ dựa vào từ điển và câu mẫu bên dưới.
-Một từ có thể có vài nghĩa, hãy chọn nghĩa hợp với cả câu và với các câu mẫu.
-Từ nào không có trong đó thì giữ nguyên và ghi [?]. Không bịa nghĩa.
+  // Từ chưa tra được + gợi ý gần giống (nếu có), để AI chọn từ thay thế
+const unknown = an.segments
+  .filter((s) => !s.loose && s.entries.length === 0)
+  .map((s) => {
+    const sug = s.suggestions
+      .map((g) => `${g.display} = ${g.meanings.slice(0, 2).join("; ")}`)
+      .join(" | ");
+    return `${s.text} → ${sug || "(không có gợi ý)"}`;
+  })
+  .join("\n");
+
+const prompt = `Dịch câu ${sourceLanguage} sang ${targetLanguage}. Chỉ dựa vào từ điển, câu mẫu và gợi ý bên dưới.
+
+Quy tắc:
+1. Một từ có thể có vài nghĩa, hãy chọn nghĩa hợp với cả câu và các câu mẫu.
+2. Với từ không có trong từ điển, xử lý theo thứ tự:
+   a. Thay bằng từ có nghĩa gần nhất mà từ điển, câu mẫu hoặc mục "Từ chưa tra được" đã có (đồng nghĩa hoặc gần nghĩa).
+   b. Nếu không có từ nào gần nghĩa, mà bỏ từ đó đi vẫn giữ nguyên ý câu (loại từ, từ đệm, từ nhấn mạnh như "rất", "những", "các", "con", "cái"), thì bỏ qua từ đó.
+   c. Nếu từ đó quan trọng, không thể thay hay bỏ, thì giữ nguyên từ gốc tại chỗ đó.
+3. Khi dịch sang tiếng Bahnar, chỉ dùng từ Bahnar có trong từ điển hoặc câu mẫu, không tự tạo từ Bahnar mới.
+4. Không dùng dấu [?], dấu ngoặc, ghi chú hay giải thích.
 
 Từ điển:
 ${words || "(không có)"}
+
+Từ chưa tra được (kèm gợi ý gần giống):
+${unknown || "(không có)"}
 
 Câu mẫu:
 ${examples || "(không có)"}
 
 Câu cần dịch: ${text}
-Chỉ trả về bản dịch tiếng Việt.`;
+Chỉ trả về bản dịch ${targetLanguage}, không thêm gì khác.`;
 
   try {
     const translation = await callLLM(prompt);
