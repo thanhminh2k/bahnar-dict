@@ -70,6 +70,11 @@ function overLimit(ip) {
 }
 
 export default async function handler(req, res) {
+  const origin = req.headers.origin || "*";
+  res.setHeader("Access-Control-Allow-Origin", origin === "*" ? "*" : origin);
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  if (req.method === "OPTIONS") return res.status(204).end();
   if (req.method !== "POST") return res.status(405).json({ error: "Chỉ hỗ trợ POST" });
   if (!provider) return res.status(500).json({ error: "Cấu hình AI_PROVIDER không hợp lệ" });
   if (!process.env[provider.key]) return res.status(500).json({ error: `Thiếu ${provider.key} trên máy chủ` });

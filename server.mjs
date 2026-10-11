@@ -110,6 +110,19 @@ function overLimit(ip) {
 /* ---------- Máy chủ ---------- */
 const app = express();
 app.set("trust proxy", 1); // sau proxy của Render/Railway để lấy đúng IP
+app.use((req, res, next) => {
+  const origin = req.headers.origin || "*";
+  res.setHeader("Access-Control-Allow-Origin", origin === "*" ? "*" : origin);
+  res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Access-Control-Max-Age", "86400");
+
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(204);
+  }
+
+  next();
+});
 app.use(express.json({ limit: "10kb" }));
 
 // Chỉ phục vụ đúng index.html, KHÔNG phục vụ cả thư mục (tránh lộ .env, server.mjs)
