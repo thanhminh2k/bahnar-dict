@@ -43,6 +43,11 @@ export function fold(s) {
   return foldRaw(String(s ?? "")).trim();
 }
 
+// Chuẩn hoá loại từ: "Động từ " -> "động từ" (rỗng nếu không có)
+export function normType(t) {
+  return String(t ?? "").normalize("NFC").trim().toLowerCase().replace(/\s+/g, " ");
+}
+
 // Tách câu thành danh sách từ THEO ĐÚNG THỨ TỰ (giữ cả từ lặp)
 export function splitWords(s) {
   return normalize(s).split(SEPARATORS).filter(Boolean);
@@ -83,11 +88,13 @@ export function escapeRegExp(s) {
 /* ---------- Xây chỉ mục ---------- */
 
 /**
- * rows: [{ bana, viet, example? }]
+ * rows: [{ bana, viet, type?, example? }]
  * direction: "bv" (Bahnar → Việt) hoặc "vb" (Việt → Bahnar)
  *
  * Trả về:
  *  - map:    khoá chuẩn hoá (có dấu) → nhóm mục từ
+ *            (mỗi nhóm có `meanings[]` và `types[]` song song: types[i] là loại từ
+ *            của meanings[i], chuỗi rỗng nếu chưa biết)
  *  - byFold: khoá không dấu → mảng các nhóm (các biến thể dấu)
  *  - maxLen: số từ của cụm dài nhất trong từ điển (bị chặn bởi MAX_PHRASE_WORDS)
  */
@@ -108,11 +115,19 @@ export function buildIndex(rows, direction) {
         fkey: fold(key),
         fwords: words.map(fold),
         meanings: [],
+        types: [],
         examples: [],
       };
       map.set(key, g);
     }
-    if (!g.meanings.includes(tgt)) g.meanings.push(tgt);
+    const type = normType(row.type);
+    const at = g.meanings.indexOf(tgt);
+    if (at === -1) {
+      g.meanings.push(tgt);
+      g.types.push(type);
+    } else if (!g.types[at] && type) {
+      g.types[at] = type; // nghĩa trùng nhưng dòng sau có loại từ -> bổ sung
+    }
     if (row.example && !g.examples.includes(row.example)) g.examples.push(row.example);
   }
 

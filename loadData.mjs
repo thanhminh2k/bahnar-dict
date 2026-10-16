@@ -3,7 +3,7 @@
  * Dữ liệu JSON dùng { bahnar, vietnamese, note } nên cần chuyển đổi tại đây.
  */
 import { readFileSync } from "node:fs";
-import { buildIndex } from "./dictEngine.js";
+import { buildIndex, normType } from "./dictEngine.js";
 
 const nfc = (s) => String(s ?? "").normalize("NFC").trim();
 const readJson = (p) => JSON.parse(readFileSync(new URL(p, import.meta.url), "utf8"));
@@ -16,7 +16,7 @@ export function vocabRows(data = readJson("./vocab.json")) {
       rows.push({
         bana: nfc(w.bahnar),
         viet: nfc(w.vietnamese),
-        type: w.type,
+        type: normType(w.type),
         page: w.note,
         topic: t.topic,
         kind: "vocab",
@@ -52,7 +52,7 @@ export function patternList(data = readJson("./patterns.json")) {
  * Thứ tự quyết định nghĩa nào hiện đầu tiên trong bản dịch nháp:
  *   1. giáo trình (vocab.json)  — có số trang, ưu tiên cao nhất
  *   2. mẫu câu (patterns.json)  — một ít từ chức năng lấy từ phần "meaning" của mẫu câu
- *   3. bana_viet_dict.json      — từ điển lớn, không có số trang
+ *   3. data_viet_bahnar.json      — từ điển lớn, không có số trang
  */
 
 // Từ chức năng mà giáo trình ghi nghĩa rõ trong patterns.json (cột meaning / câu ví dụ).
@@ -79,28 +79,41 @@ export function patternWordRows() {
 const dictKey = (s) => nfc(s).toLowerCase().replace(/\s+/g, " ");
 
 // Từ điển lớn: chuẩn hóa NFC, bỏ khoảng trắng thừa và dấu "-" thừa ở cuối, bỏ dòng trùng hệt.
-export function dictRows(path = "./bana_viet_dict.json") {
+// Giữ `type` (loại từ); nếu dòng trùng có loại từ mà dòng đầu chưa có thì bổ sung.
+export function dictRows(path = "./data_viet_bahnar.json") {
   let raw;
   try { raw = readJson(path); } catch { return []; }
-  const seen = new Set();
-  const rows = [];
+  const byKey = new Map();
   for (const r of raw) {
     const bana = nfc(r?.bana).replace(/\s+/g, " ");
     const viet = nfc(r?.viet).replace(/\s+/g, " ").replace(/\s*-\s*$/, "");
     if (!bana || !viet) continue;
+    const type = normType(r?.type);
     const k = dictKey(bana) + "|" + dictKey(viet);
-    if (seen.has(k)) continue;
-    seen.add(k);
-    rows.push({ bana, viet, src: "bana_viet_dict", kind: "vocab" });
+    const old = byKey.get(k);
+    if (old) {
+      if (!old.type && type) old.type = type;
+      continue;
+    }
+    byKey.set(k, { bana, viet, type, src: "data_viet_bahnar", kind: "vocab" });
   }
-  return rows;
+  return [...byKey.values()];
 }
 
 // Gộp 3 nguồn; bỏ dòng từ điển lớn nếu trùng hệt (cùng từ Bahnar, cùng nghĩa) với dòng đã có.
+// Dòng giáo trình/mẫu câu chưa có loại từ thì mượn loại từ từ dòng trùng của từ điển lớn.
 export function allVocabRows() {
   const base = vocabRows().map((r) => ({ ...r, src: "giáo trình" })).concat(patternWordRows());
-  const seen = new Set(base.map((r) => dictKey(r.bana) + "|" + dictKey(r.viet)));
-  const extra = dictRows().filter((r) => !seen.has(dictKey(r.bana) + "|" + dictKey(r.viet)));
+  const seen = new Map(base.map((r) => [dictKey(r.bana) + "|" + dictKey(r.viet), r]));
+  const extra = [];
+  for (const r of dictRows()) {
+    const hit = seen.get(dictKey(r.bana) + "|" + dictKey(r.viet));
+    if (hit) {
+      if (!hit.type && r.type) hit.type = r.type;
+    } else {
+      extra.push(r);
+    }
+  }
   return base.concat(extra);
 }
 

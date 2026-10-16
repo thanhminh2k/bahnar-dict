@@ -49,14 +49,27 @@ if (!apiKey) {
 }
 const MODEL = process.env.AI_MODEL || provider.model;
 
-async function callLLM(prompt) {
+// Phong cách dịch Tối Giản (Minimalist Translation) — đưa vào vai "system"
+const systemPrompt = (targetLanguage) => `Bạn là một biên dịch viên chuyên nghiệp theo phong cách Tối Giản (Minimalist Translation).
+
+Nhiệm vụ: Dịch đoạn văn bản người dùng đưa sang ${targetLanguage}.
+
+Nguyên tắc dịch thuật:
+1. ĐƠN GIẢN & NGẮN GỌN: Lược bỏ tất cả các từ cảm thán, từ đệm, từ nối rườm rà hoặc từ chỉ mức độ dư thừa (như: "thật sự", "rất", "à", "ừm", "nhé", "chà", "vô cùng"...) nếu việc bỏ chúng KHÔNG làm thay đổi nội dung cốt lõi của câu.
+2. GIỮ ĐÚNG MỨC ĐỘ NẾU QUAN TRỌNG: Chỉ giữ lại từ chỉ mức độ nếu nó trực tiếp quyết định thông số, bản chất hoặc quyết định logic của vấn đề.
+3. VĂN PHONG: Tự nhiên, đi thẳng vào vấn đề, không hoa mỹ.`;
+
+async function callLLM(system, prompt) {
   const r = await fetch(provider.url, {
     method: "POST",
     headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` },
     body: JSON.stringify({
       model: MODEL,
       temperature: 0.2,
-      messages: [{ role: "user", content: prompt }],
+      messages: [
+        { role: "system", content: system },
+        { role: "user", content: prompt },
+      ],
     }),
     signal: AbortSignal.timeout(30000),
   });
@@ -171,9 +184,16 @@ app.post("/api/translate", async (req, res) => {
     return res.status(429).json({ error: "Bạn đã dùng hết lượt dịch AI trong giờ này, thử lại sau." });
   }
 
+  // "nghĩa (loại từ)": loại từ giúp AI chọn đúng nghĩa theo vai trò trong câu
+  const fmtMeanings = (e, n = 3) =>
+    e.meanings
+      .slice(0, n)
+      .map((m, i) => (e.types?.[i] ? `${m} (${e.types[i]})` : m))
+      .join("; ");
+
   const words = an.segments
     .filter((s) => s.entries[0])
-    .map((s) => `${s.text} = ${s.entries[0].meanings.slice(0, 3).join("; ")}`)
+    .map((s) => `${s.text} = ${fmtMeanings(s.entries[0])}`)
     .join("\n");
   const examples = similar(text, direction)
     .map((s) => direction === "vb" ? `${s.viet} => ${s.bana}` : `${s.bana} => ${s.viet}`)
@@ -184,7 +204,7 @@ const unknown = an.segments
   .filter((s) => !s.loose && s.entries.length === 0)
   .map((s) => {
     const sug = s.suggestions
-      .map((g) => `${g.display} = ${g.meanings.slice(0, 2).join("; ")}`)
+      .map((g) => `${g.display} = ${fmtMeanings(g, 2)}`)
       .join(" | ");
     return `${s.text} → ${sug || "(không có gợi ý)"}`;
   })
@@ -193,7 +213,7 @@ const unknown = an.segments
 const prompt = `Dịch câu ${sourceLanguage} sang ${targetLanguage}. Chỉ dựa vào từ điển, câu mẫu và gợi ý bên dưới.
 
 Quy tắc:
-1. Một từ có thể có vài nghĩa, hãy chọn nghĩa hợp với cả câu và các câu mẫu.
+1. Một từ có thể có vài nghĩa, hãy chọn nghĩa hợp với cả câu và các câu mẫu. Loại từ ghi trong ngoặc (động từ, danh từ, tính từ...) cho biết vai trò của nghĩa đó, dùng nó để chọn nghĩa đúng với vị trí của từ trong câu; không đưa loại từ vào bản dịch.
 2. Với từ không có trong từ điển, xử lý theo thứ tự:
    a. Thay bằng từ có nghĩa gần nhất mà từ điển, câu mẫu hoặc mục "Từ chưa tra được" đã có (đồng nghĩa hoặc gần nghĩa).
    b. Nếu không có từ nào gần nghĩa, mà bỏ từ đó đi vẫn giữ nguyên ý câu (loại từ, từ đệm, từ nhấn mạnh như "rất", "những", "các", "con", "cái"), thì bỏ qua từ đó.
@@ -214,7 +234,7 @@ Câu cần dịch: ${text}
 Chỉ trả về bản dịch ${targetLanguage}, không thêm gì khác.`;
 
   try {
-    const translation = await callLLM(prompt);
+    const translation = await callLLM(systemPrompt(targetLanguage), prompt);
     if (translation) cacheSet(key, translation);
     res.json({ translation, draft: an.draft });
   } catch (e) {
